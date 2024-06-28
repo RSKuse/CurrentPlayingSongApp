@@ -3,6 +3,7 @@
 //  CurrentPlayingSongApp
 //
 //  Created by Reuben Simphiwe Kuse on 2024/06/25.
+//  Created by Reuben Simphiwe Kuse on 2024/06/20.
 //
 
 import UIKit
@@ -10,7 +11,7 @@ import UIKit
 class CurrentPlayingSongViewController: UIViewController {
     var timer: Timer?
     var remainingTime: Int?
-    var songDuration: Int? // Declare songDuration property
+    var songDuration: Int?
     
     var selectedDevice: Device? {
         didSet {
