@@ -73,48 +73,26 @@
       ]
     },
     "artists": [
+
       {
         "external_urls": {
           "spotify": "string"
         },
         "followers": {
           "href": "string",
-          "total": 0
+          "total": 79500000
         },
         "genres": ["Hip-hop", "Rap"],
         "href": "string",
         "id": "string",
         "images": [
           {
-            "url": "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228",
-            "height": 300,
-            "width": 300
-          }
-        ],
-        "name": "Black coffee",
-        "popularity": 0,
-        "type": "artist",
-        "uri": "string"
-      },
-      {
-        "external_urls": {
-          "spotify": "string"
-        },
-        "followers": {
-          "href": "string",
-          "total": 0
-        },
-        "genres": ["Hip-hop", "Rap"],
-        "href": "string",
-        "id": "string",
-        "images": [
-          {
-            "url": "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228",
+            "url": "https://www.rollingstone.com/wp-content/uploads/2021/10/kendrick-songs.jpg?w=1581&h=1054&crop=1",
             "height": 300,
             "width": 300
           },
           {
-            "url": "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228",
+            "url": "https://www.rollingstone.com/wp-content/uploads/2021/10/kendrick-songs.jpg?w=1581&h=1054&crop=1",
             "height": 500,
             "width": 360
           }
@@ -123,41 +101,13 @@
         "name": "Kendrick Lamar",
         "popularity": 0,
         "type": "artist",
-        "uri": "string"
+        "uri": "string",
+        "description": "Kendrick Lamar is an American rapper, songwriter, and record producer known for his innovative style and socially conscious lyrics. He is considered one of the most influential hip-hop artists of his generation."
       },
-      {
-        "external_urls": {
-          "spotify": "string"
-        },
-        "followers": {
-          "href": "string",
-          "total": 987
-        },
-        "genres": ["Hip-hop", "Rap"],
-        "href": "string",
-        "id": "string",
-        "images": [
-          {
-            "url": "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228",
-            "height": 300,
-            "width": 300
-          },
-          {
-            "url": "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228",
-            "height": 300,
-            "width": 300
-          }
-        ],
-        "name": "Sia",
-        "popularity": 0,
-        "type": "artist",
-        "uri": "string"
-      }
-      
     ],
-    "available_markets": ["string", "arket",  "arket"],
+    "available_markets": ["string", "arket", "arket"],
     "disc_number": 0,
-    "duration_ms": 676878,
+    "duration_ms": 16878,
     "explicit": false,
     "external_ids": {
       "isrc": "string",
@@ -178,8 +128,7 @@
     "popularity": 0,
     "preview_url": "string",
     "track_number": 0,
-    "type": "track",
-    "uri": "string",
+    "type, uri": "string",
     "is_local": false
   },
   "currently_playing_type": "string",

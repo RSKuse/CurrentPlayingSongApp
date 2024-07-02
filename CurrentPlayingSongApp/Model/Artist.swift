@@ -17,13 +17,13 @@ struct ItemArtist: Codable {
     var name: String?
     var popularity: Int?
     var type, uri: String?
+    var description: String? // Ensure this field is present
 
     enum CodingKeys: String, CodingKey {
-        case externalUrls
-        case followers, genres, href, id, images, name, popularity, type, uri
+        case externalUrls = "external_urls"
+        case followers, genres, href, id, images, name, popularity, type, uri, description
     }
 }
-
 // MARK: - Followers
 struct Followers: Codable {
     var href: String?

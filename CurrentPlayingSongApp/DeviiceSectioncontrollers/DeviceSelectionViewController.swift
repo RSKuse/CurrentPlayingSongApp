@@ -136,7 +136,7 @@ extension DeviceSelectionViewController: UITableViewDataSource, UITableViewDeleg
         }
         let device = devices[indexPath.row]
         cell.deviceNameLabel.text = device.name
-        cell.deviceIconImageView.image = UIImage(named: device.iconName)
+        cell.deviceIconImageView.image = UIImage(named: device.iconName)?.withTintColor(.white, renderingMode: .alwaysTemplate)
         return cell
     }
 

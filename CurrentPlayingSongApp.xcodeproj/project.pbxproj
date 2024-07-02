@@ -24,6 +24,8 @@
 		F3322AD02C2AAE43009A56BA /* JsonToSwiftConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322ACF2C2AAE43009A56BA /* JsonToSwiftConvert.swift */; };
 		F3322AD22C2D7B0D009A56BA /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AD12C2D7B0D009A56BA /* DeviceTableViewCell.swift */; };
 		F3322AD42C2D9182009A56BA /* SpotifyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AD32C2D9182009A56BA /* SpotifyProfile.swift */; };
+		F3322AD82C33DBCB009A56BA /* UISetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AD72C33DBCB009A56BA /* UISetup.swift */; };
+		F3322ADA2C33DD60009A56BA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AD92C33DD60009A56BA /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		F3322ACF2C2AAE43009A56BA /* JsonToSwiftConvert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonToSwiftConvert.swift; sourceTree = "<group>"; };
 		F3322AD12C2D7B0D009A56BA /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
 		F3322AD32C2D9182009A56BA /* SpotifyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyProfile.swift; sourceTree = "<group>"; };
+		F3322AD72C33DBCB009A56BA /* UISetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISetup.swift; sourceTree = "<group>"; };
+		F3322AD92C33DD60009A56BA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,12 +85,11 @@
 				F3322AA62C2AABC3009A56BA /* AppDelegate.swift */,
 				F3322ABE2C2AAC9F009A56BA /* SpotifyImages.swift */,
 				F3322ABC2C2AAC8F009A56BA /* SpotifyColors.swift */,
-				F3322ACD2C2AAE31009A56BA /* CurrentlyPlayingSong.json */,
-				F3322AAA2C2AABC3009A56BA /* CurrentPlayingSongViewController.swift */,
-				F3322ABA2C2AAC79009A56BA /* DeviceSelectionViewController.swift */,
-				F3322AD12C2D7B0D009A56BA /* DeviceTableViewCell.swift */,
-				F3322ACF2C2AAE43009A56BA /* JsonToSwiftConvert.swift */,
+				F3322ADB2C33DDEB009A56BA /* CurrentPlayingControllers */,
+				F3322ADC2C33DE29009A56BA /* DeviiceSectioncontrollers */,
 				F3322AC62C2AACF3009A56BA /* Model */,
+				F3322ACD2C2AAE31009A56BA /* CurrentlyPlayingSong.json */,
+				F3322ACF2C2AAE43009A56BA /* JsonToSwiftConvert.swift */,
 				F3322AAF2C2AABC5009A56BA /* Assets.xcassets */,
 				F3322AB12C2AABC5009A56BA /* LaunchScreen.storyboard */,
 				F3322AB42C2AABC5009A56BA /* Info.plist */,
@@ -106,6 +109,25 @@
 				F3322AD32C2D9182009A56BA /* SpotifyProfile.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F3322ADB2C33DDEB009A56BA /* CurrentPlayingControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F3322AAA2C2AABC3009A56BA /* CurrentPlayingSongViewController.swift */,
+				F3322AD72C33DBCB009A56BA /* UISetup.swift */,
+				F3322AD92C33DD60009A56BA /* Extensions.swift */,
+			);
+			path = CurrentPlayingControllers;
+			sourceTree = "<group>";
+		};
+		F3322ADC2C33DE29009A56BA /* DeviiceSectioncontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				F3322ABA2C2AAC79009A56BA /* DeviceSelectionViewController.swift */,
+				F3322AD12C2D7B0D009A56BA /* DeviceTableViewCell.swift */,
+			);
+			path = DeviiceSectioncontrollers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +212,8 @@
 				F3322ACC2C2AACF3009A56BA /* SpotifyCurrentlyPlaying.swift in Sources */,
 				F3322ACB2C2AACF3009A56BA /* Item.swift in Sources */,
 				F3322ABB2C2AAC79009A56BA /* DeviceSelectionViewController.swift in Sources */,
+				F3322ADA2C33DD60009A56BA /* Extensions.swift in Sources */,
+				F3322AD82C33DBCB009A56BA /* UISetup.swift in Sources */,
 				F3322ACA2C2AACF3009A56BA /* Devices.swift in Sources */,
 				F3322AC72C2AACF3009A56BA /* Actions.swift in Sources */,
 				F3322AC82C2AACF3009A56BA /* Album.swift in Sources */,
