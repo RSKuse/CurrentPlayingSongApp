@@ -55,8 +55,9 @@ extension CurrentPlayingSongViewController {
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        // contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true // zzz: You had an extra constraint here.
         
+        // zzz: This is where your red section was coming from
         songCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         songCollectionView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         songCollectionView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true

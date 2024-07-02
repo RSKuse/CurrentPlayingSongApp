@@ -46,7 +46,6 @@ class CurrentPlayingSongViewController: UIViewController {
     
     lazy var albumCoverImageView: UIImageView = {
         let imageView = UIImageView()
-        //        imageView.image = SpotifyImages.albumCoverImage
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 5
@@ -67,7 +66,7 @@ class CurrentPlayingSongViewController: UIViewController {
     lazy var artistLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
-        label.text = "Nancy Wilson, Cannonball Adderley"
+        label.text = "..."
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .center
@@ -158,7 +157,6 @@ class CurrentPlayingSongViewController: UIViewController {
         let slider = UISlider()
         slider.minimumTrackTintColor = .white
         slider.maximumTrackTintColor = .lightGray
-        //slider.setThumbImage(UIImage(), for: .normal)
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
@@ -293,25 +291,8 @@ class CurrentPlayingSongViewController: UIViewController {
         view.backgroundColor = .brown
         setupUI()
         fetchDataFromInternet()
-        //        NotificationCenter.default.addObserver(self, selector: #selector(deviceSelected(_:)), name: NSNotification.Name("DeviceSelected"), object: nil)
     }
     
-    func fetchDataFromInternet() {
-        guard let playingSong = JsonToSwiftConvert.convertToSwift(),
-              let item = playingSong.item,
-              let artists = item.artists else {
-            return
-        }
-        
-        displaySongArtists(artists: artists)
-        devices = playingSong.devices
-        updateUIFromCurrentPlayingSong(song: playingSong)
-        self.selectedDevice = playingSong.device
-        
-        if let aboutArtist = playingSong.aboutArtist {
-            aboutLabel.text = aboutArtist
-        }
-    }
     func updateUIFromCurrentPlayingSong(song: SpotifyCurrentPlayingSong) {
         if let songIsPlaying = song.isPlaying {
             self.isPlaying = songIsPlaying
@@ -379,63 +360,6 @@ class CurrentPlayingSongViewController: UIViewController {
             }
         }
         artistLabel.text = artistNamesArray.joined(separator: ", ")
-    }
-    func startTimer() {
-        guard timer == nil else { return }
-        
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-    }
-    
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
-    }
-    
-    @objc func updateTimer() {
-        guard let remainingTime = remainingTime, remainingTime > 0 else {
-            stopTimer()
-            return
-        }
-        
-        self.remainingTime! -= 1
-        
-        let elapsedSeconds = songDuration! - self.remainingTime!
-        let elapsedMinutes = elapsedSeconds / 60
-        let elapsedRemainingSeconds = elapsedSeconds % 60
-        currentTimeLabel.text = String(format: "%02d:%02d", elapsedMinutes, elapsedRemainingSeconds)
-        
-        let remainingMinutes = self.remainingTime! / 60
-        let remainingSeconds = self.remainingTime! % 60
-        durationLabel.text = String(format: "-%02d:%02d", remainingMinutes, remainingSeconds)
-        
-        durationSlider.value = Float(elapsedSeconds)
-        
-        print("Updated remaining time: \(self.remainingTime!) seconds") // Debug statement
-    }
-    
-    @objc func playPauseButtonTapped() {
-        guard let isPlaying = self.isPlaying else { return }
-        
-        self.isPlaying = !isPlaying
-        
-        print("Play/Pause button tapped. Is playing: \(self.isPlaying!)") // Debug statement
-        
-        if self.isPlaying! {
-            if remainingTime == 0 {
-                remainingTime = songDuration // Reset remaining time to song duration
-                let minutes = remainingTime! / 60
-                let seconds = remainingTime! % 60
-                durationLabel.text = String(format: "%02d:%02d", minutes, seconds)
-            }
-            startTimer()
-            print("Timer started with remaining time: \(remainingTime!) seconds") // Debug statement
-        } else {
-            stopTimer()
-            print("Timer stopped") // Debug statement
-        }
-        
-        let buttonImage = self.isPlaying! ? UIImage(named: "pause_icon") : SpotifyImages.playPauseButton
-        playPauseButton.setImage(buttonImage, for: .normal)
     }
     
     @objc func shuffleButtonTapped() {

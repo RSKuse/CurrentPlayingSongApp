@@ -11,6 +11,8 @@ import UIKit
 
 class DeviceTableViewCell: UITableViewCell {
     
+    static let cellID = "DeviceTableViewCellID"
+    
     lazy var deviceIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
