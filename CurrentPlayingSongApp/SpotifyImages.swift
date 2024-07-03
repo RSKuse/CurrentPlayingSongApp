@@ -14,6 +14,7 @@ class SpotifyImages {
     static var albumCoverImage = UIImage(named: "album_cover")
     
     static var shuffleButton = UIImage(named: "shuffle_icon")
+    static var repeatImage = UIImage(named: "repeat_icon")
     static var playPauseButton = UIImage(named: "play_icon")
     static var previousButton = UIImage(named: "previous_icon")
     static var nextButton = UIImage(named: "next_icon")

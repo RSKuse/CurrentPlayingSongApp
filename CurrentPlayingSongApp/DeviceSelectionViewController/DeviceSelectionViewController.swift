@@ -60,7 +60,7 @@ class DeviceSelectionViewController: UIViewController {
     
     lazy var devicesTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DeviceCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: DeviceTableViewCell.cellID)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +81,6 @@ class DeviceSelectionViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupUI()
-//        loadDevices()
         registerCell()
     }
     
@@ -119,30 +118,7 @@ class DeviceSelectionViewController: UIViewController {
     }
 
     func registerCell() {
-        devicesTableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: "DeviceCell")
+        devicesTableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: DeviceTableViewCell.cellID) // zzz: This was registered in line 63
     }
     
-}
-
-extension DeviceSelectionViewController: UITableViewDataSource, UITableViewDelegate {
- 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return devices.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceCell", for: indexPath) as? DeviceTableViewCell else {
-            fatalError("Unable to dequeue DeviceTableViewCell") // ALSO this syntax
-        }
-        let device = devices[indexPath.row]
-        cell.deviceNameLabel.text = device.name
-        cell.deviceIconImageView.image = UIImage(named: device.iconName)?.withTintColor(.white, renderingMode: .alwaysTemplate)
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedDevice = devices[indexPath.row]
-        didSelectDevice?(selectedDevice)
-        dismiss(animated: true, completion: nil)
-    }
 }
