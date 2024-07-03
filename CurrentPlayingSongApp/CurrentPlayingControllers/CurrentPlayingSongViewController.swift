@@ -3,6 +3,7 @@
 //  CurrentPlayingSongApp
 //
 //  Created by Reuben Simphiwe Kuse on 2024/06/25.
+//  Created by Reuben Simphiwe Kuse on 2024/06/20.
 //
 
 import UIKit
@@ -10,7 +11,7 @@ import UIKit
 class CurrentPlayingSongViewController: UIViewController {
     var timer: Timer?
     var remainingTime: Int?
-    var songDuration: Int? // Declare songDuration property
+    var songDuration: Int?
     
     var selectedDevice: Device? {
         didSet {
@@ -24,9 +25,28 @@ class CurrentPlayingSongViewController: UIViewController {
     var isAdded = false
     var devices: [Device]?
     
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var songCollectionView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var albumCoverImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = SpotifyImages.albumCoverImage
+        //        imageView.image = SpotifyImages.albumCoverImage
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 5
@@ -203,6 +223,71 @@ class CurrentPlayingSongViewController: UIViewController {
         return button
     }()
     
+    lazy var artistInfoContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGray
+        view.layer.cornerRadius = 10
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var aboutLabel: UILabel = {
+        let label = UILabel()
+        label.text = "About the artist"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var artistImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 5
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    lazy var artistNameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var listenersLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var artistDescriptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.textColor = .lightGray
+        textView.font = UIFont.systemFont(ofSize: 14)
+        textView.isEditable = false
+        textView.backgroundColor = .clear
+        textView.isScrollEnabled = false // This is important for UITextView inside a scrollable container
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    lazy var followButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Follow", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .clear
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
+        button.addTarget(self, action: #selector(followButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .brown
@@ -212,21 +297,21 @@ class CurrentPlayingSongViewController: UIViewController {
     }
     
     func fetchDataFromInternet() {
-        // startLoader()
         guard let playingSong = JsonToSwiftConvert.convertToSwift(),
               let item = playingSong.item,
               let artists = item.artists else {
-            // showFailure()
             return
         }
         
-        // stopLoader()
         displaySongArtists(artists: artists)
         devices = playingSong.devices
         updateUIFromCurrentPlayingSong(song: playingSong)
         self.selectedDevice = playingSong.device
+        
+        if let aboutArtist = playingSong.aboutArtist {
+            aboutLabel.text = aboutArtist
+        }
     }
-    
     func updateUIFromCurrentPlayingSong(song: SpotifyCurrentPlayingSong) {
         if let songIsPlaying = song.isPlaying {
             self.isPlaying = songIsPlaying
@@ -265,11 +350,36 @@ class CurrentPlayingSongViewController: UIViewController {
         for artistData in artists {
             if let artistName = artistData.name {
                 artistNamesArray.append(artistName)
+                // For the first artist, update the artist info section
+                if artistNamesArray.count == 1 {
+                    artistNameLabel.text = artistName
+                    if let followers = artistData.followers?.total {
+                        listenersLabel.text = "\(followers.formattedWithSuffix) monthly listeners"
+                    } else {
+                        listenersLabel.text = "No listeners data"
+                    }
+                    if let description = artistData.description {
+                        artistDescriptionTextView.text = description
+                        print("Artist Description: \(description)") // Debug print to check if description is available
+                    } else {
+                        artistDescriptionTextView.text = "No description available"
+                        print("No description available for \(artistName)") // Debug print to check if description is missing
+                    }
+                    
+                    if let artistImageUrl = artistData.images?.first?.url, let imageUrl = URL(string: artistImageUrl) {
+                        DispatchQueue.global().async {
+                            if let data = try? Data(contentsOf: imageUrl) {
+                                DispatchQueue.main.async {
+                                    self.artistImageView.image = UIImage(data: data)
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         artistLabel.text = artistNamesArray.joined(separator: ", ")
     }
-    
     func startTimer() {
         guard timer == nil else { return }
         
@@ -328,10 +438,6 @@ class CurrentPlayingSongViewController: UIViewController {
         playPauseButton.setImage(buttonImage, for: .normal)
     }
     
-    
-    
-    
-    
     @objc func shuffleButtonTapped() {
         isShuffling = !isShuffling
         let spotifyGreen = SpotifyColors.spotifyGreen
@@ -350,15 +456,26 @@ class CurrentPlayingSongViewController: UIViewController {
         }
     }
     
+    @objc func followButtonTapped() {
+        if followButton.title(for: .normal) == "Follow" {
+            followButton.setTitle("Following", for: .normal)
+        } else {
+            followButton.setTitle("Follow", for: .normal)
+        }
+        
+    }
+    
     func updateSelectedDeviceUI(selectedDevice: Device) {
         
         if let deviceImage = UIImage(named: selectedDevice.iconName) {
             deviceButton.setImage(deviceImage, for: .normal)
+            deviceButton.tintColor = SpotifyColors.spotifyGreen
         } else {
             print("Image \(selectedDevice.iconName) not found")
         }
-        playlistLabel.text = "Current device: \(selectedDevice.name ?? "Unknown Device")"
-        deviceTypeLabel.text = "Device Name: \(selectedDevice.name ?? "Unknown Type")"
+        playlistLabel.text = "\(selectedDevice.name ?? "Unknown Device")"
+        deviceTypeLabel.text = "\(selectedDevice.name ?? "Unknown Type")"
+        deviceTypeLabel.textColor = SpotifyColors.spotifyGreen
     }
     
     @objc func deviceButtonTapped() {
@@ -372,96 +489,4 @@ class CurrentPlayingSongViewController: UIViewController {
     
 }
 
-extension CurrentPlayingSongViewController {
-    func setupUI() {
-        
-        view.addSubview(albumCoverImageView)
-        view.addSubview(songAndArtistTitleStackView)
-        view.addSubview(playPauseButton)
-        view.addSubview(shuffleButton)
-        view.addSubview(previousButton)
-        view.addSubview(nextButton)
-        view.addSubview(shufflePlayRewindStackView)
-        view.addSubview(durationSlider)
-        view.addSubview(currentTimeLabel)
-        view.addSubview(durationLabel)
-        view.addSubview(addButton)
-        view.addSubview(deviceButton)
-        view.addSubview(playlistLabel)
-        view.addSubview(downArrowButton)
-        view.addSubview(moreOptionsButton)
-        view.addSubview(timerButton)
-        view.addSubview(shareButton)
-        view.addSubview(deviceTypeLabel)
-        
-        downArrowButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        downArrowButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        downArrowButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        downArrowButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        playlistLabel.centerYAnchor.constraint(equalTo: downArrowButton.centerYAnchor).isActive = true
-        playlistLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        moreOptionsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        moreOptionsButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        moreOptionsButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        moreOptionsButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        albumCoverImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        albumCoverImageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        albumCoverImageView.topAnchor.constraint(equalTo: downArrowButton.bottomAnchor, constant: 35).isActive = true
-        albumCoverImageView.heightAnchor.constraint(equalToConstant: 350).isActive = true
-        
-        songAndArtistTitleStackView.topAnchor.constraint(equalTo: albumCoverImageView.bottomAnchor, constant: 40).isActive = true
-        songAndArtistTitleStackView.leftAnchor.constraint(equalTo: durationSlider.leftAnchor).isActive = true
-        
-        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        addButton.centerYAnchor.constraint(equalTo: songAndArtistTitleStackView.centerYAnchor).isActive = true
-        addButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        addButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        durationSlider.topAnchor.constraint(equalTo: songAndArtistTitleStackView.bottomAnchor, constant: 20).isActive = true
-        durationSlider.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        durationSlider.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        
-        currentTimeLabel.leftAnchor.constraint(equalTo: durationSlider.leftAnchor).isActive = true
-        currentTimeLabel.topAnchor.constraint(equalTo: durationSlider.bottomAnchor, constant: 2).isActive = true
-        
-        durationLabel.rightAnchor.constraint(equalTo: durationSlider.rightAnchor).isActive = true
-        durationLabel.topAnchor.constraint(equalTo: durationSlider.bottomAnchor, constant: 2).isActive = true
-        
-        shufflePlayRewindStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        shufflePlayRewindStackView.topAnchor.constraint(equalTo: currentTimeLabel.bottomAnchor, constant: 20).isActive = true
-        
-        timerButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        timerButton.centerYAnchor.constraint(equalTo: shufflePlayRewindStackView.centerYAnchor).isActive = true
-        timerButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        timerButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        shuffleButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        shuffleButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        previousButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        previousButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        
-        playPauseButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        playPauseButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        nextButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        
-        deviceButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        deviceButton.topAnchor.constraint(equalTo: shufflePlayRewindStackView.bottomAnchor, constant: 20).isActive = true
-        deviceButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        deviceButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        
-        shareButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        shareButton.topAnchor.constraint(equalTo: timerButton.bottomAnchor, constant: 20).isActive = true
-        shareButton.widthAnchor.constraint(equalToConstant: 45).isActive = true
-        shareButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
-        deviceTypeLabel.topAnchor.constraint(equalTo: deviceButton.bottomAnchor, constant: 10).isActive = true
-        deviceTypeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-    }
-}
+

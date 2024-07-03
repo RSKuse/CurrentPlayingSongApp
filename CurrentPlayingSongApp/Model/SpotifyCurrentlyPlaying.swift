@@ -24,6 +24,7 @@ struct SpotifyCurrentPlayingSong: Codable {
     var currentlyPlayingType: String?
     var actions: Actions?
     var devices: [Device]? // Add this line
+    var aboutArtist: String?
 
     enum CodingKeys: String, CodingKey {
         case device
@@ -36,6 +37,8 @@ struct SpotifyCurrentPlayingSong: Codable {
         case currentlyPlayingType
         case actions
         case devices // Add this line
+        case aboutArtist = "about_artist"
+        
     }
 }
 
