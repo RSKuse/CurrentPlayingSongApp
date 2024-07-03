@@ -10,6 +10,9 @@ import UIKit
 
 class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    /**
+     This enum allows you to use it instead of indexpaths. I will explain it in a call.
+     */
     enum PlayingSongCells: Int, CaseIterable {
         case playingSong
         case aboutArtist
