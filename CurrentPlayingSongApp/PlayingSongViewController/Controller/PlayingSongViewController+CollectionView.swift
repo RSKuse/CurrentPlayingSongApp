@@ -21,6 +21,9 @@ extension PlayingSongViewController {
                                                                            for: indexPath) as? PlayingSongCell else {
                 return UICollectionViewCell()
             }
+            if let item = currentlyPlayingSong?.item {
+                playingSongCell.configure(with: item)
+            }
             return playingSongCell
         case .aboutArtist:
             guard let aboutArtistCell = collectionView.dequeueReusableCell(withReuseIdentifier: AboutArtistCollectionCell.cellID,
@@ -36,7 +39,6 @@ extension PlayingSongViewController {
             return songCreditsCell
         }
     }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch PlayingSongCells(rawValue: indexPath.item) {
         case .playingSong:
@@ -48,3 +50,4 @@ extension PlayingSongViewController {
         }
     }
 }
+

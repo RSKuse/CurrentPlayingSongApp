@@ -88,4 +88,15 @@ class PlayingSongCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(with item: Item) {
+        if let imageUrlString = item.album?.images?.first?.url, let imageUrl = URL(string: imageUrlString) {
+            // Assume you have a method or extension to load images from URL
+            albumCoverImageView.loadImage(from: imageUrl)
+        }
+        playingSongTitleView.songTitleLabel.text = item.name
+        playingSongTitleView.artistLabel.text = item.artists?.first?.name
+    }
+    
+
+    
 }

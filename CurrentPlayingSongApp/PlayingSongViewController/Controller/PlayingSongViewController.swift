@@ -10,6 +10,10 @@ import UIKit
 
 class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var currentlyPlayingSong: SpotifyCurrentPlayingSong?
+    
+    
+    
     /**
      This enum allows you to use it instead of indexpaths. I will explain it in a call.
      */
@@ -44,6 +48,12 @@ class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UIC
         view.backgroundColor = UIColor.lightText
         setupUI()
         registerCollectionViewCells()
+        fetchCurrentlyPlayingSong()
+    }
+    
+    func fetchCurrentlyPlayingSong() {
+        currentlyPlayingSong = JsonToSwiftConvert.convertToSwift()
+        playingSongCollectionView.reloadData()
     }
     
     func setupUI() {
