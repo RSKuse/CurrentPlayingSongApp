@@ -40,6 +40,7 @@
 		F3322AD42C2D9182009A56BA /* SpotifyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AD32C2D9182009A56BA /* SpotifyProfile.swift */; };
 		F3322AD82C33DBCB009A56BA /* CurrentPlayingSongViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AD72C33DBCB009A56BA /* CurrentPlayingSongViewController+Constraints.swift */; };
 		F3322ADA2C33DD60009A56BA /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AD92C33DD60009A56BA /* Int.swift */; };
+		F3322ADE2C389FBF009A56BA /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322ADD2C389FBF009A56BA /* ImageViewer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		F3322AD32C2D9182009A56BA /* SpotifyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyProfile.swift; sourceTree = "<group>"; };
 		F3322AD72C33DBCB009A56BA /* CurrentPlayingSongViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentPlayingSongViewController+Constraints.swift"; sourceTree = "<group>"; };
 		F3322AD92C33DD60009A56BA /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		F3322ADD2C389FBF009A56BA /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				F3322AD92C33DD60009A56BA /* Int.swift */,
 				456B42792C34A62400F328F5 /* CollectionViewCell.swift */,
+				F3322ADD2C389FBF009A56BA /* ImageViewer.swift */,
 				456B42672C349C1500F328F5 /* Formatter.swift */,
 			);
 			path = Extensions;
@@ -294,6 +297,7 @@
 				456B42682C349C1500F328F5 /* Formatter.swift in Sources */,
 				456B42852C34B31600F328F5 /* PlayingSongTrackView.swift in Sources */,
 				F3322AD42C2D9182009A56BA /* SpotifyProfile.swift in Sources */,
+				F3322ADE2C389FBF009A56BA /* ImageViewer.swift in Sources */,
 				456B427A2C34A62400F328F5 /* CollectionViewCell.swift in Sources */,
 				456B42812C34ABD600F328F5 /* SongTitleContainerView.swift in Sources */,
 				F3322AAB2C2AABC3009A56BA /* CurrentPlayingSongViewController.swift in Sources */,
