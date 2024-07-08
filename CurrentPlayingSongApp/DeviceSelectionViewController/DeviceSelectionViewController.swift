@@ -60,7 +60,6 @@ class DeviceSelectionViewController: UIViewController {
     
     lazy var devicesTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: DeviceTableViewCell.cellID)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -118,7 +117,7 @@ class DeviceSelectionViewController: UIViewController {
     }
 
     func registerCell() {
-        devicesTableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: DeviceTableViewCell.cellID) // zzz: This was registered in line 63
+        devicesTableView.register(DeviceTableViewCell.self, forCellReuseIdentifier: DeviceTableViewCell.cellID)
     }
     
 }

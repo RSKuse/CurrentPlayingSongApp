@@ -23,6 +23,13 @@ extension PlayingSongViewController {
             }
             if let item = currentlyPlayingSong?.item {
                 playingSongCell.configure(with: item)
+                playingSongCell.songControlsView.onPlayPauseButtonTapped = {
+                    self.playPauseButtonTapped()
+                    }
+                playingSongCell.deviceControlAndShareSongView.onDeviceButtonTapped = {
+                    self.deviceButtonTapped()
+                }
+                
             }
             return playingSongCell
         case .aboutArtist:
@@ -39,6 +46,7 @@ extension PlayingSongViewController {
             return songCreditsCell
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch PlayingSongCells(rawValue: indexPath.item) {
         case .playingSong:
