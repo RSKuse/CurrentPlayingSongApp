@@ -46,12 +46,12 @@
       "id": "2up3OPMp9Tb4dAKM2erWXQ",
       "images": [
         {
-          "url": "https://www.rollingstone.com/wp-content/uploads/2021/10/kendrick-songs.jpg?w=1581&h=1054&crop=1",
+          "url": "https://f4.bcbits.com/img/a0325424619_10.jpg",
           "height": 300,
           "width": 300
         }
       ],
-      "name": "Not Like Us",
+      "name": "Never Change",
       "release_date": "1981-12",
       "release_date_precision": "year",
       "restrictions": {
@@ -80,34 +80,34 @@
         },
         "followers": {
           "href": "string",
-          "total": 79500000
+          "total": 34500000
         },
         "genres": ["Hip-hop", "Rap"],
         "href": "string",
         "id": "string",
         "images": [
           {
-            "url": "https://www.rollingstone.com/wp-content/uploads/2021/10/kendrick-songs.jpg?w=1581&h=1054&crop=1",
+            "url": "https://f4.bcbits.com/img/a0325424619_10.jpg",
             "height": 300,
             "width": 300
           },
           {
-            "url": "https://www.rollingstone.com/wp-content/uploads/2021/10/kendrick-songs.jpg?w=1581&h=1054&crop=1",
+            "url": "https://i.insider.com/6430081d3007470019fe1547?width=1136&format=jpeg",
             "height": 500,
             "width": 360
           }
           
         ],
-        "name": "Kendrick Lamar",
+        "name": "Jay Z",
         "popularity": 0,
         "type": "artist",
         "uri": "string",
-        "description": "Kendrick Lamar is an American rapper, songwriter, and record producer known for his innovative style and socially conscious lyrics. He is considered one of the most influential hip-hop artists of his generation."
+        "description": "Shawn Corey Carter, known professionally as Jay-Z, is an American rapper and entrepreneur. Born and raised in New York City, he was named the greatest rapper of all time by Billboard and Vibe in 2023."
       },
     ],
     "available_markets": ["string", "arket", "arket"],
     "disc_number": 0,
-    "duration_ms": 16878,
+    "duration_ms": 19878,
     "explicit": false,
     "external_ids": {
       "isrc": "string",

@@ -80,8 +80,6 @@ class PlayingSongCell: UICollectionViewCell {
         albumCoverImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         albumCoverImageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         albumCoverImageView.heightAnchor.constraint(equalToConstant: 350).isActive = true
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -95,8 +93,16 @@ class PlayingSongCell: UICollectionViewCell {
         }
         playingSongTitleView.songTitleLabel.text = item.name
         playingSongTitleView.artistLabel.text = item.artists?.first?.name
+        
+        // Set duration label
+        if let durationMS = item.durationMS {
+            let songDuration = durationMS / 1000
+            let minutes = songDuration / 60
+            let seconds = songDuration % 60
+            playingSongSliderView.durationLabel.text = String(format: "%02d:%02d", minutes, seconds)
+            playingSongSliderView.durationSlider.maximumValue = Float(songDuration)
+            playingSongSliderView.durationSlider.value = 0
+            playingSongSliderView.currentTimeLabel.text = "00:00"
+        }
     }
-    
-
-    
 }

@@ -10,11 +10,12 @@ import UIKit
 
 class SongControlsContainerView: UIView {
     
+    var onPlayPauseButtonTapped: (() -> Void)?
+    
     lazy var shuffleButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(SpotifyImages.shuffleButton, for: .normal)
         button.tintColor = .lightGray
-        // button.addTarget(self, action: #selector(shuffleButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -23,7 +24,7 @@ class SongControlsContainerView: UIView {
         let button = UIButton(type: .system)
         button.setImage(SpotifyImages.playPauseButton, for: .normal)
         button.tintColor = .white
-        // button.addTarget(self, action: #selector(playPauseButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(playPauseButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -94,5 +95,8 @@ class SongControlsContainerView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func playPauseButtonTapped() {
+        onPlayPauseButtonTapped?()
+    }
 }
-

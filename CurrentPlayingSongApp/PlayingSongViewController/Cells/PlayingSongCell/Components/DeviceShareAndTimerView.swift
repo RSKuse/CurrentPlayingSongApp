@@ -9,12 +9,13 @@ import Foundation
 import UIKit
 
 class DeviceShareSongAndTimerView: UIView {
+    var onDeviceButtonTapped: (() -> Void)?
     
     lazy var deviceButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(SpotifyImages.deviceButton, for: .normal)
         button.tintColor = .white
-        // button.addTarget(self, action: #selector(deviceButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(deviceButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -79,6 +80,10 @@ class DeviceShareSongAndTimerView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func deviceButtonTapped() {
+        onDeviceButtonTapped?()
     }
 }
 
