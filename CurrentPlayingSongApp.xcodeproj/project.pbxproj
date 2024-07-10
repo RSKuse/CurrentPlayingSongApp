@@ -41,6 +41,9 @@
 		F3322AD82C33DBCB009A56BA /* CurrentPlayingSongViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AD72C33DBCB009A56BA /* CurrentPlayingSongViewController+Constraints.swift */; };
 		F3322ADA2C33DD60009A56BA /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AD92C33DD60009A56BA /* Int.swift */; };
 		F3322ADE2C389FBF009A56BA /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322ADD2C389FBF009A56BA /* ImageViewer.swift */; };
+		F3322AE02C3EFC25009A56BA /* VerticalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322ADF2C3EFC25009A56BA /* VerticalCollectionViewController.swift */; };
+		F3322AE22C3EFC47009A56BA /* VerticalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AE12C3EFC47009A56BA /* VerticalCollectionViewCell.swift */; };
+		F3322AE42C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AE32C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +83,9 @@
 		F3322AD72C33DBCB009A56BA /* CurrentPlayingSongViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentPlayingSongViewController+Constraints.swift"; sourceTree = "<group>"; };
 		F3322AD92C33DD60009A56BA /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		F3322ADD2C389FBF009A56BA /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
+		F3322ADF2C3EFC25009A56BA /* VerticalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionViewController.swift; sourceTree = "<group>"; };
+		F3322AE12C3EFC47009A56BA /* VerticalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionViewCell.swift; sourceTree = "<group>"; };
+		F3322AE32C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " HorizontalCollectionViewCell.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,7 @@
 			children = (
 				456B426F2C34A0E400F328F5 /* PlayingSongViewController.swift */,
 				456B42722C34A1D900F328F5 /* PlayingSongViewController+CollectionView.swift */,
+				F3322ADF2C3EFC25009A56BA /* VerticalCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,6 +135,8 @@
 				456B427F2C34ABC200F328F5 /* PlayingSongCell */,
 				456B427B2C34A88300F328F5 /* AboutArtistCollectionCell.swift */,
 				456B427D2C34A90F00F328F5 /* SongCreditsCollectionCell.swift */,
+				F3322AE12C3EFC47009A56BA /* VerticalCollectionViewCell.swift */,
+				F3322AE32C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -300,9 +309,11 @@
 				F3322ADE2C389FBF009A56BA /* ImageViewer.swift in Sources */,
 				456B427A2C34A62400F328F5 /* CollectionViewCell.swift in Sources */,
 				456B42812C34ABD600F328F5 /* SongTitleContainerView.swift in Sources */,
+				F3322AE02C3EFC25009A56BA /* VerticalCollectionViewController.swift in Sources */,
 				F3322AAB2C2AABC3009A56BA /* CurrentPlayingSongViewController.swift in Sources */,
 				456B42882C34B4EA00F328F5 /* DeviceShareAndTimerView.swift in Sources */,
 				F3322AA72C2AABC3009A56BA /* AppDelegate.swift in Sources */,
+				F3322AE22C3EFC47009A56BA /* VerticalCollectionViewCell.swift in Sources */,
 				F3322AD22C2D7B0D009A56BA /* DeviceTableViewCell.swift in Sources */,
 				456B42732C34A1D900F328F5 /* PlayingSongViewController+CollectionView.swift in Sources */,
 				456B427E2C34A90F00F328F5 /* SongCreditsCollectionCell.swift in Sources */,
@@ -321,6 +332,7 @@
 				F3322AD82C33DBCB009A56BA /* CurrentPlayingSongViewController+Constraints.swift in Sources */,
 				456B426C2C349DE400F328F5 /* CurrentPlayingSongViewController+Network.swift in Sources */,
 				F3322ACA2C2AACF3009A56BA /* Devices.swift in Sources */,
+				F3322AE42C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift in Sources */,
 				456B42782C34A38300F328F5 /* PlayingSongCell.swift in Sources */,
 				F3322AC72C2AACF3009A56BA /* Actions.swift in Sources */,
 				F3322AC82C2AACF3009A56BA /* Album.swift in Sources */,

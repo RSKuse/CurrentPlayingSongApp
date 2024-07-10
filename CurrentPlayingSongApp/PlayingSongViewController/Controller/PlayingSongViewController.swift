@@ -10,7 +10,7 @@ import UIKit
 
 class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var currentlyPlayingSong: SpotifyCurrentPlayingSong?
+    var currentlyPlayingSong: SpotifyCurrentPlayingSong? 
     var timer: Timer?
     var remainingTime: Int?
     var songDuration: Int?
