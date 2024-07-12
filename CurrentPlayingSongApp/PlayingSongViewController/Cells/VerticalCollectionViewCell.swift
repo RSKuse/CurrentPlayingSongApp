@@ -27,7 +27,6 @@ class VerticalCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(horizontalCollectionView)
         setupConstraints()
     }
     
@@ -35,13 +34,14 @@ class VerticalCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            horizontalCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            horizontalCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            horizontalCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            horizontalCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
+    func setupConstraints() {
+        contentView.addSubview(horizontalCollectionView)
+        
+        horizontalCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        horizontalCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        horizontalCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        horizontalCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
     }
 }
 
