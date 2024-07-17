@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-//        window?.rootViewController = PlayingSongViewController() // UINavigationController(rootViewController: CurrentPlayingSongViewController())
-        window?.rootViewController = VerticalCollectionViewController()
+        window?.rootViewController = PlayingSongViewController() // UINavigationController(rootViewController: CurrentPlayingSongViewController())
+//        window?.rootViewController = VerticalCollectionViewController()
         return true
     }
 
