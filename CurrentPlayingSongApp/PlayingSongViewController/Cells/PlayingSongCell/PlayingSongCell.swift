@@ -1,16 +1,21 @@
+//
+//  PlayingSongCell.swift
+//  CurrentPlayingSongApp
+//
+//  Created by Gugulethu Mhlanga on 2024/07/02.
+//
+
 import Foundation
 import UIKit
 
 class PlayingSongCell: UICollectionViewCell {
     
-
-    
     lazy var horizontalCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 700)
+        layout.minimumLineSpacing = 50
+        layout.minimumInteritemSpacing = 50
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 350)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isPagingEnabled = true
@@ -20,16 +25,6 @@ class PlayingSongCell: UICollectionViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
-    }()
-    
-    lazy var albumCoverImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.darkGray
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 10.0
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
     }()
     
     lazy var playingSongTitleView: SongTitleContainerView = {
@@ -67,7 +62,6 @@ class PlayingSongCell: UICollectionViewCell {
         contentView.addSubview(songControlsView)
         contentView.addSubview(playingSongSliderView)
         contentView.addSubview(playingSongTitleView)
-        contentView.addSubview(albumCoverImageView)
         
         horizontalCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         horizontalCollectionView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
@@ -93,11 +87,6 @@ class PlayingSongCell: UICollectionViewCell {
         playingSongTitleView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         playingSongTitleView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         playingSongTitleView.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        
-        albumCoverImageView.bottomAnchor.constraint(equalTo: playingSongTitleView.topAnchor, constant: -50).isActive = true
-        albumCoverImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        albumCoverImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        albumCoverImageView.heightAnchor.constraint(equalToConstant: 350).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -105,23 +94,7 @@ class PlayingSongCell: UICollectionViewCell {
     }
     
     func configure(with item: Item) {
-        if let imageUrlString = item.album?.images?.first?.url, let imageUrl = URL(string: imageUrlString) {
-            // Assume you have a method or extension to load images from URL
-            albumCoverImageView.loadImage(from: imageUrl)
-        }
-        playingSongTitleView.songTitleLabel.text = item.name
-        playingSongTitleView.artistLabel.text = item.artists?.first?.name
-        
-        // Set duration label
-        if let durationMS = item.durationMS {
-            let songDuration = durationMS / 1000
-            let minutes = songDuration / 60
-            let seconds = songDuration % 60
-            playingSongSliderView.durationLabel.text = String(format: "%02d:%02d", minutes, seconds)
-            playingSongSliderView.durationSlider.maximumValue = Float(songDuration)
-            playingSongSliderView.durationSlider.value = 0
-            playingSongSliderView.currentTimeLabel.text = "00:00"
-        }
+        // configure method implementation here
     }
 }
 
@@ -131,18 +104,17 @@ extension PlayingSongCell: UICollectionViewDataSource, UICollectionViewDelegate 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HorizontalSongCell.cellID, for: indexPath) as! HorizontalSongCell
-        cell.backgroundColor = .blue // For testing purposes
-        // Configure the cell with your data
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HorizontalSongCell.cellID, for: indexPath) as? HorizontalSongCell else {
+            return UICollectionViewCell()
+        }
+        // Here we can set the same image for simulation purposes
+        cell.albumCoverImageView.image = UIImage(named: "your_album_cover_image")
         return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 }
 
 class HorizontalSongCell: UICollectionViewCell {
-
+    
     lazy var albumCoverImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.darkGray
@@ -159,12 +131,12 @@ class HorizontalSongCell: UICollectionViewCell {
     }
     
     func setupUI() {
-        addSubview(albumCoverImageView)
+        contentView.addSubview(albumCoverImageView)
         
-        albumCoverImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        albumCoverImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        albumCoverImageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        albumCoverImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        albumCoverImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        albumCoverImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        albumCoverImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        albumCoverImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

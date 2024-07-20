@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension PlayingSongViewController {
-  
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return PlayingSongCells.allCases.count
     }
