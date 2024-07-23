@@ -62,5 +62,19 @@ class PlayingSongSliderView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func updateSlider(elapsedTime: Int, totalDuration: Int) {
+        let progress = Float(elapsedTime) / Float(totalDuration)
+        durationSlider.value = progress
+        let elapsedMinutes = elapsedTime / 60
+        let elapsedRemainingSeconds = elapsedTime % 60
+        currentTimeLabel.text = String(format: "%02d:%02d", elapsedMinutes, elapsedRemainingSeconds)
+        
+        let remainingTime = totalDuration - elapsedTime
+        let remainingMinutes = remainingTime / 60
+        let remainingSeconds = remainingTime % 60
+        durationLabel.text = String(format: "-%02d:%02d", remainingMinutes, remainingSeconds)
+    }
 }
+
 

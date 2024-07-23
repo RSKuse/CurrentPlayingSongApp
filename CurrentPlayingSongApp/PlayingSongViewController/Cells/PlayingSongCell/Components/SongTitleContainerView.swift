@@ -14,7 +14,7 @@ class SongTitleContainerView: UIView {
         let label = UILabel()
         label.textColor = .white
         label.numberOfLines = 1
-        label.text = "Never Change"
+        //label.text = "Never Change"
         label.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -23,7 +23,7 @@ class SongTitleContainerView: UIView {
     lazy var artistLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = "Jay-Z"
+        //label.text = "Jay-Z"
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false

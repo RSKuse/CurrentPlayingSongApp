@@ -10,6 +10,11 @@ import UIKit
 
 class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // learn about computed properties
+    var albumViewHeight :CGFloat {
+        self.view.frame.height - 302
+    }
+    
     var currentlyPlayingSong: SpotifyCurrentPlayingSong?
     var timer: Timer?
     var remainingTime: Int?
@@ -135,15 +140,8 @@ class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func updateLabelsAndSlider(elapsedSeconds: Int) {
-        let elapsedMinutes = elapsedSeconds / 60
-        let elapsedRemainingSeconds = elapsedSeconds % 60
-        let remainingMinutes = (songDuration! - elapsedSeconds) / 60
-        let remainingSeconds = (songDuration! - elapsedSeconds) % 60
-        
         if let playingSongCell = playingSongCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? PlayingSongCell {
-            playingSongCell.playingSongSliderView.currentTimeLabel.text = String(format: "%02d:%02d", elapsedMinutes, elapsedRemainingSeconds)
-            playingSongCell.playingSongSliderView.durationLabel.text = String(format: "-%02d:%02d", remainingMinutes, remainingSeconds)
-            playingSongCell.playingSongSliderView.durationSlider.value = Float(elapsedSeconds)
+            playingSongCell.updateSlider(elapsedSeconds: elapsedSeconds, songDuration: songDuration!)
         }
     }
     
@@ -161,7 +159,6 @@ class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UIC
             playingSongCell.deviceControlAndShareSongView.deviceButton.setImage(UIImage(named: selectedDevice.iconName), for: .normal)
         }
     }
-    
 }
 
 // MARK: Interface Constants
