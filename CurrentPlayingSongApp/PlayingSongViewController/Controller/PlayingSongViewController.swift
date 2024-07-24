@@ -64,6 +64,7 @@ class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UIC
         setupUI()
         registerCollectionViewCells()
         fetchCurrentlyPlayingSong()
+        //fetchNews()
     }
     
     
@@ -159,8 +160,8 @@ class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UIC
             playingSongCell.deviceControlAndShareSongView.deviceButton.setImage(UIImage(named: selectedDevice.iconName), for: .normal)
         }
     }
+    
 }
-
 // MARK: Interface Constants
 extension PlayingSongViewController {
     
@@ -181,3 +182,19 @@ extension PlayingSongViewController {
     }
     
 }
+
+
+//    func fetchNews() {
+//        var request = URLRequest(url: URL(string: "https://newsapi.org/v2/everything?q=bitcoin&apiKey=7fcc5fd64d5f428aa1c7c7176527023b")!,timeoutInterval: Double.infinity)
+//        request.httpMethod = "GET"
+//
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            guard let data = data else {
+//                print(String(describing: error))
+//                return
+//            }
+//            print(String(data: data, encoding: .utf8)!)
+//        }
+//
+//        task.resume()
+//    }

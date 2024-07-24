@@ -45,7 +45,7 @@
 		F3322AE22C3EFC47009A56BA /* VerticalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AE12C3EFC47009A56BA /* VerticalCollectionViewCell.swift */; };
 		F3322AE42C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3322AE32C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift */; };
 		F37BE77E2C4FB87100375B1C /* AlbumHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE77D2C4FB87100375B1C /* AlbumHeaderView.swift */; };
-		F37BE7802C4FB98900375B1C /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE77F2C4FB98900375B1C /* TrackCell.swift */; };
+		F37BE7802C4FB98900375B1C /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE77F2C4FB98900375B1C /* SongCell.swift */; };
 		F37BE7822C4FD45A00375B1C /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE7812C4FD45A00375B1C /* AlbumViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,7 @@
 		F3322AE12C3EFC47009A56BA /* VerticalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionViewCell.swift; sourceTree = "<group>"; };
 		F3322AE32C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " HorizontalCollectionViewCell.swift"; sourceTree = "<group>"; };
 		F37BE77D2C4FB87100375B1C /* AlbumHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumHeaderView.swift; sourceTree = "<group>"; };
-		F37BE77F2C4FB98900375B1C /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
+		F37BE77F2C4FB98900375B1C /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		F37BE7812C4FD45A00375B1C /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,7 +141,7 @@
 			children = (
 				456B427F2C34ABC200F328F5 /* PlayingSongCell */,
 				456B427B2C34A88300F328F5 /* AboutArtistCollectionCell.swift */,
-				F37BE77F2C4FB98900375B1C /* TrackCell.swift */,
+				F37BE77F2C4FB98900375B1C /* SongCell.swift */,
 				456B427D2C34A90F00F328F5 /* SongCreditsCollectionCell.swift */,
 				F3322AE12C3EFC47009A56BA /* VerticalCollectionViewCell.swift */,
 				F3322AE32C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift */,
@@ -335,7 +335,7 @@
 				F3322AD22C2D7B0D009A56BA /* DeviceTableViewCell.swift in Sources */,
 				456B42732C34A1D900F328F5 /* PlayingSongViewController+CollectionView.swift in Sources */,
 				456B427E2C34A90F00F328F5 /* SongCreditsCollectionCell.swift in Sources */,
-				F37BE7802C4FB98900375B1C /* TrackCell.swift in Sources */,
+				F37BE7802C4FB98900375B1C /* SongCell.swift in Sources */,
 				456B427C2C34A88300F328F5 /* AboutArtistCollectionCell.swift in Sources */,
 				456B426A2C349C3900F328F5 /* DeviceSelectionViewController+TableView.swift in Sources */,
 				F3322ABF2C2AAC9F009A56BA /* SpotifyImages.swift in Sources */,
