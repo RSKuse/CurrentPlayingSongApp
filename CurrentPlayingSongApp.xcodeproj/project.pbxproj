@@ -47,6 +47,8 @@
 		F37BE77E2C4FB87100375B1C /* AlbumHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE77D2C4FB87100375B1C /* AlbumHeaderView.swift */; };
 		F37BE7802C4FB98900375B1C /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE77F2C4FB98900375B1C /* SongCell.swift */; };
 		F37BE7822C4FD45A00375B1C /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE7812C4FD45A00375B1C /* AlbumViewController.swift */; };
+		F37BE7842C51BA0D00375B1C /* AlbumViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE7832C51BA0D00375B1C /* AlbumViewController+TableView.swift */; };
+		F37BE7862C51BD8200375B1C /* ControlButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE7852C51BD8200375B1C /* ControlButtonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		F37BE77D2C4FB87100375B1C /* AlbumHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumHeaderView.swift; sourceTree = "<group>"; };
 		F37BE77F2C4FB98900375B1C /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		F37BE7812C4FD45A00375B1C /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		F37BE7832C51BA0D00375B1C /* AlbumViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumViewController+TableView.swift"; sourceTree = "<group>"; };
+		F37BE7852C51BD8200375B1C /* ControlButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButtonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 			children = (
 				456B426F2C34A0E400F328F5 /* PlayingSongViewController.swift */,
 				F37BE7812C4FD45A00375B1C /* AlbumViewController.swift */,
+				F37BE7832C51BA0D00375B1C /* AlbumViewController+TableView.swift */,
 				456B42722C34A1D900F328F5 /* PlayingSongViewController+CollectionView.swift */,
 				F3322ADF2C3EFC25009A56BA /* VerticalCollectionViewController.swift */,
 			);
@@ -162,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				F37BE77D2C4FB87100375B1C /* AlbumHeaderView.swift */,
+				F37BE7852C51BD8200375B1C /* ControlButtonsView.swift */,
 				456B42802C34ABD600F328F5 /* SongTitleContainerView.swift */,
 				456B42842C34B31600F328F5 /* PlayingSongTrackView.swift */,
 				456B42822C34ADA900F328F5 /* SongControlsContainerView.swift */,
@@ -345,11 +351,13 @@
 				456B42832C34ADA900F328F5 /* SongControlsContainerView.swift in Sources */,
 				F3322ACC2C2AACF3009A56BA /* SpotifyCurrentlyPlaying.swift in Sources */,
 				456B426E2C349E2700F328F5 /* CurrentPlayingSongViewController+PlaySong.swift in Sources */,
+				F37BE7862C51BD8200375B1C /* ControlButtonsView.swift in Sources */,
 				F3322ACB2C2AACF3009A56BA /* Item.swift in Sources */,
 				F3322ABB2C2AAC79009A56BA /* DeviceSelectionViewController.swift in Sources */,
 				F3322ADA2C33DD60009A56BA /* Int.swift in Sources */,
 				F3322AD82C33DBCB009A56BA /* CurrentPlayingSongViewController+Constraints.swift in Sources */,
 				F37BE77E2C4FB87100375B1C /* AlbumHeaderView.swift in Sources */,
+				F37BE7842C51BA0D00375B1C /* AlbumViewController+TableView.swift in Sources */,
 				456B426C2C349DE400F328F5 /* CurrentPlayingSongViewController+Network.swift in Sources */,
 				F3322ACA2C2AACF3009A56BA /* Devices.swift in Sources */,
 				F3322AE42C3EFC86009A56BA /*  HorizontalCollectionViewCell.swift in Sources */,

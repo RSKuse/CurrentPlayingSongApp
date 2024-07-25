@@ -8,60 +8,80 @@
 import Foundation
 import UIKit
 
-class SongCell: UICollectionViewCell {
-    
-    lazy var songTitleLabel: UILabel = {
+class SongCell: UITableViewCell {
+
+    static let cellID = "SongCell"
+
+    lazy var trackTitleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     lazy var artistNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .lightGray
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        label.textColor = .systemGray3
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var moreOptionsButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        button.tintColor = .white
+    lazy var trackInfoStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [trackTitleLabel, artistNameLabel])
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        stackView.alignment = .leading
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
+    lazy var optionsButton: UIButton = {
+        let button = UIButton(type: .system)
+        let smallConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .thin, scale: .small)
+        button.setImage(UIImage(systemName: "ellipsis", withConfiguration: smallConfig), for: .normal)
+        button.tintColor = .systemGray3
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .black
         setupUI()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func setupUI() {
-        addSubview(songTitleLabel)
-        addSubview(artistNameLabel)
-        addSubview(moreOptionsButton)
+//        addSubview(trackTitleLabel)
+//        addSubview(artistNameLabel)
+        addSubview(trackInfoStackView)
+        addSubview(optionsButton)
         
-        songTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        songTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         
-        artistNameLabel.topAnchor.constraint(equalTo: songTitleLabel.bottomAnchor, constant: 4).isActive = true
-        artistNameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        trackInfoStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 14).isActive = true
+        trackInfoStackView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        trackInfoStackView.rightAnchor.constraint(equalTo: optionsButton.leftAnchor, constant: -8).isActive = true
         
-        moreOptionsButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        moreOptionsButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
-        moreOptionsButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        moreOptionsButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+//        trackTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 14).isActive = true
+//        trackTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        
+//        artistNameLabel.leftAnchor.constraint(equalTo: trackTitleLabel.leftAnchor).isActive = true
+//        artistNameLabel.topAnchor.constraint(equalTo: trackTitleLabel.bottomAnchor, constant: 4).isActive = true
+//        artistNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        
+        optionsButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -14).isActive = true
+        optionsButton.centerYAnchor.constraint(equalTo: trackInfoStackView.centerYAnchor).isActive = true
+        
     }
     
-    func configure(songNumber: Int) {
-        songTitleLabel.text = "Song Title \(songNumber)"
-        artistNameLabel.text = "Artist Name"
+    func configure(trackTitle: String, artistName: String) {
+        trackTitleLabel.text = trackTitle
+        artistNameLabel.text = artistName
     }
 }
