@@ -98,7 +98,7 @@ class PlayingSongCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with item: Item?, albumImageUrl: URL) {
+    func configure(with item: Song?, albumImageUrl: URL) {
         guard let item = item else { return }
         playingSongTitleView.songTitleLabel.text = item.name
         if let artistName = item.artists?.first?.name {

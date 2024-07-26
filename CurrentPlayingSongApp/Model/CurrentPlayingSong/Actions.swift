@@ -25,19 +25,9 @@ struct Actions: Codable {
 }
 
 // MARK: - Context
-struct Context: Codable {
-    var type, href: String?
-    var externalUrls: ExternalUrls?
-    var uri: String?
-
-    enum CodingKeys: String, CodingKey {
-        case type, href
-        case externalUrls
-        case uri
-    }
-}
-
+/*
 // MARK: - ExternalUrls
 struct ExternalUrls: Codable {
     var spotify: String?
 }
+*/

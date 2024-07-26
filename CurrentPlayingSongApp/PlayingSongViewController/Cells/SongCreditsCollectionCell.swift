@@ -53,7 +53,7 @@ class SongCreditsCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with artist: AlbumArtist) {
+    func configure(with artist: Artist) {
         creditsLabel.text = "Credits: \(artist.name ?? "")"
     }
 

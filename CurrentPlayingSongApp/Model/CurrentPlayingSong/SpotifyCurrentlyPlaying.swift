@@ -20,7 +20,7 @@ struct SpotifyCurrentPlayingSong: Codable {
     var context: Context?
     var timestamp, progressMS: Int?
     var isPlaying: Bool?
-    var item: Item?
+    var item: Song?
     var currentlyPlayingType: String?
     var actions: Actions?
     var devices: [Device]? // Add this line
@@ -39,6 +39,18 @@ struct SpotifyCurrentPlayingSong: Codable {
         case devices // Add this line
         case aboutArtist = "about_artist"
         
+    }
+}
+
+struct Context: Codable {
+    var type, href: String?
+    var externalUrls: ExternalUrls?
+    var uri: String?
+
+    enum CodingKeys: String, CodingKey {
+        case type, href
+        case externalUrls
+        case uri
     }
 }
 
