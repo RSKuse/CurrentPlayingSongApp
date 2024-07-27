@@ -7,16 +7,17 @@
 
 import Foundation
 
-// MARK: - ItemArtist
-struct ItemArtist: Codable {
+// MARK: - Artist
+struct Artist: Codable {
     var externalUrls: ExternalUrls?
     var followers: Followers?
     var genres: [String]?
     var href, id: String?
     var images: [Image]?
     var name: String?
+    var type: ArtistType?
+    var uri: String?
     var popularity: Int?
-    var type, uri: String?
     var description: String? // Ensure this field is present
 
     enum CodingKeys: String, CodingKey {
@@ -31,9 +32,9 @@ struct Followers: Codable {
 }
 
 // MARK: - ExternalIDS
-struct ExternalIDS: Codable {
-    var isrc, ean, upc: String?
-}
+//struct ExternalIDS: Codable {
+//    var isrc, ean, upc: String?
+//}
 
 // MARK: - LinkedFrom
 struct LinkedFrom: Codable {

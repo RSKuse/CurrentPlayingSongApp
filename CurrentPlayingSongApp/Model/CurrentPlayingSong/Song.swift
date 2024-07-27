@@ -8,9 +8,9 @@
 import Foundation
 
 // MARK: - Item
-struct Item: Codable {
+struct Song: Codable {
     var album: Album?
-    var artists: [ItemArtist]?
+    var artists: [Artist]?
     var availableMarkets: [String]?
     var discNumber: Int?
     var durationMS: Int?
@@ -45,4 +45,9 @@ struct Item: Codable {
         case type, uri
         case isLocal = "is_local"
     }
+}
+
+// MARK: - Restrictions
+struct Restrictions: Codable {
+    var reason: String?
 }
