@@ -10,8 +10,10 @@ import UIKit
 
 extension CurrentPlayingSongViewController {
     
+    //
     func fetchDataFromInternet() {
-        guard let playingSong = JsonToSwiftConvert.convertToSwift(),
+        guard let playingSong = JsonToSwiftConvert.convertToSwift(fileName: "CurrentlyPlayingSong",
+                                                                  model: SpotifyCurrentPlayingSong.self),
               let item = playingSong.item,
               let artists = item.artists else {
             return

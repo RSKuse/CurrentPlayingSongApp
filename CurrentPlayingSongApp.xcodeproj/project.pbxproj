@@ -49,6 +49,8 @@
 		F37BE7822C4FD45A00375B1C /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE7812C4FD45A00375B1C /* AlbumViewController.swift */; };
 		F37BE7842C51BA0D00375B1C /* AlbumViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE7832C51BA0D00375B1C /* AlbumViewController+TableView.swift */; };
 		F37BE7862C51BD8200375B1C /* ControlButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37BE7852C51BD8200375B1C /* ControlButtonsView.swift */; };
+		F39241162C5847A5001D8B48 /* Tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39241152C5847A5001D8B48 /* Tracks.swift */; };
+		F392411C2C58AE10001D8B48 /* AlbumTracks.json in Resources */ = {isa = PBXBuildFile; fileRef = F392411B2C58AE10001D8B48 /* AlbumTracks.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,8 @@
 		F37BE7812C4FD45A00375B1C /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		F37BE7832C51BA0D00375B1C /* AlbumViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumViewController+TableView.swift"; sourceTree = "<group>"; };
 		F37BE7852C51BD8200375B1C /* ControlButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButtonsView.swift; sourceTree = "<group>"; };
+		F39241152C5847A5001D8B48 /* Tracks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracks.swift; sourceTree = "<group>"; };
+		F392411B2C58AE10001D8B48 /* AlbumTracks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AlbumTracks.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,11 +250,13 @@
 				F3322AC52C2AACF3009A56BA /* SpotifyCurrentlyPlaying.swift */,
 				F3322AC02C2AACF3009A56BA /* Actions.swift */,
 				F3322AC12C2AACF3009A56BA /* Album.swift */,
+				F39241152C5847A5001D8B48 /* Tracks.swift */,
 				F3322AC22C2AACF3009A56BA /* Artist.swift */,
 				F3322AC32C2AACF3009A56BA /* Devices.swift */,
 				F3322AC42C2AACF3009A56BA /* Item.swift */,
 				F3322AD32C2D9182009A56BA /* SpotifyProfile.swift */,
 				F3322ACD2C2AAE31009A56BA /* CurrentlyPlayingSong.json */,
+				F392411B2C58AE10001D8B48 /* AlbumTracks.json */,
 			);
 			path = CurrentPlayingSong;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3322ACE2C2AAE31009A56BA /* CurrentlyPlayingSong.json in Resources */,
+				F392411C2C58AE10001D8B48 /* AlbumTracks.json in Resources */,
 				F3322AB02C2AABC5009A56BA /* Assets.xcassets in Resources */,
 				F3322AB32C2AABC5009A56BA /* Base in Resources */,
 			);
@@ -357,6 +364,7 @@
 				F3322ADA2C33DD60009A56BA /* Int.swift in Sources */,
 				F3322AD82C33DBCB009A56BA /* CurrentPlayingSongViewController+Constraints.swift in Sources */,
 				F37BE77E2C4FB87100375B1C /* AlbumHeaderView.swift in Sources */,
+				F39241162C5847A5001D8B48 /* Tracks.swift in Sources */,
 				F37BE7842C51BA0D00375B1C /* AlbumViewController+TableView.swift in Sources */,
 				456B426C2C349DE400F328F5 /* CurrentPlayingSongViewController+Network.swift in Sources */,
 				F3322ACA2C2AACF3009A56BA /* Devices.swift in Sources */,

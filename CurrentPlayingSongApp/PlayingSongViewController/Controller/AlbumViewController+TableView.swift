@@ -11,16 +11,18 @@ import UIKit
 extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 // Number of tracks
+        return tracks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SongCell.cellID, for: indexPath) as! SongCell
-        cell.configure(trackTitle: "Track Title \(indexPath.row + 1)", artistName: "Artist Name")
+        let track = tracks[indexPath.row]
+        cell.configure(trackTitle: track.name ?? "Unknown Title", artistName: track.artists?.first?.name ?? "Unknown Artist")
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60 // Height for each track cell
+        return 60
     }
 }

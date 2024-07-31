@@ -5,7 +5,6 @@
 //  Created by Reuben Simphiwe Kuse on 2024/07/23.
 //
 
-import Foundation
 import UIKit
 
 class SongCell: UITableViewCell {
@@ -27,7 +26,7 @@ class SongCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     lazy var trackInfoStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [trackTitleLabel, artistNameLabel])
         stackView.distribution = .fillProportionally
@@ -58,26 +57,15 @@ class SongCell: UITableViewCell {
     }
     
     func setupUI() {
-//        addSubview(trackTitleLabel)
-//        addSubview(artistNameLabel)
         addSubview(trackInfoStackView)
         addSubview(optionsButton)
-        
         
         trackInfoStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 14).isActive = true
         trackInfoStackView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
         trackInfoStackView.rightAnchor.constraint(equalTo: optionsButton.leftAnchor, constant: -8).isActive = true
         
-//        trackTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 14).isActive = true
-//        trackTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        
-//        artistNameLabel.leftAnchor.constraint(equalTo: trackTitleLabel.leftAnchor).isActive = true
-//        artistNameLabel.topAnchor.constraint(equalTo: trackTitleLabel.bottomAnchor, constant: 4).isActive = true
-//        artistNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
-        
         optionsButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -14).isActive = true
         optionsButton.centerYAnchor.constraint(equalTo: trackInfoStackView.centerYAnchor).isActive = true
-        
     }
     
     func configure(trackTitle: String, artistName: String) {

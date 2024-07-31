@@ -7,20 +7,22 @@
 
 import Foundation
 
+
+// MARK: - Actions
 struct Actions: Codable {
     var interruptingPlayback, pausing, resuming, seeking: Bool?
     var skippingNext, skippingPrev, togglingRepeatContext, togglingShuffle: Bool?
     var togglingRepeatTrack, transferringPlayback: Bool?
 
     enum CodingKeys: String, CodingKey {
-        case interruptingPlayback
+        case interruptingPlayback = "interrupting_playback"
         case pausing, resuming, seeking
-        case skippingNext
-        case skippingPrev
-        case togglingRepeatContext
-        case togglingShuffle
-        case togglingRepeatTrack
-        case transferringPlayback
+        case skippingNext = "skipping_next"
+        case skippingPrev = "skipping_prev"
+        case togglingRepeatContext = "toggling_repeat_context"
+        case togglingShuffle = "toggling_shuffle"
+        case togglingRepeatTrack = "toggling_repeat_track"
+        case transferringPlayback = "transferring_playback"
     }
 }
 
@@ -32,7 +34,7 @@ struct Context: Codable {
 
     enum CodingKeys: String, CodingKey {
         case type, href
-        case externalUrls
+        case externalUrls = "external_urls"
         case uri
     }
 }

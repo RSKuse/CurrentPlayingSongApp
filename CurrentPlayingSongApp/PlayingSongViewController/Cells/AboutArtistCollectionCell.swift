@@ -117,7 +117,7 @@ class AboutArtistCollectionCell: UICollectionViewCell {
         }
     }
     
-    func configure(with artist: ItemArtist) {
+    func configure(with artist: Artist) {
         artistLabel.text = artist.name
         if let followers = artist.followers?.total {
             listenersLabel.text = "Listeners: \(followers.formattedWithSuffix)"

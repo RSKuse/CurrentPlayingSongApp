@@ -23,7 +23,6 @@ class AlbumHeaderView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .white
-        label.text = "Emakhaya"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -32,7 +31,6 @@ class AlbumHeaderView: UIView {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "artist_image")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -41,7 +39,6 @@ class AlbumHeaderView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textColor = .white
-        label.text = "Mlindo The Vocalist"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -60,7 +57,6 @@ class AlbumHeaderView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 10, weight: .medium)
         label.textColor = .systemGray3
-        label.text = "Album • 2018"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -71,14 +67,12 @@ class AlbumHeaderView: UIView {
         imageView.layer.borderWidth = 1.5
         imageView.layer.borderColor = UIColor.systemGray3.cgColor
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "album_image")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
-//        button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         let smallConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .thin, scale: .small)
         button.setImage(UIImage(systemName: "plus.circle", withConfiguration: smallConfig), for: .normal)
         button.tintColor = .systemGray3
@@ -88,7 +82,6 @@ class AlbumHeaderView: UIView {
     
     lazy var downloadButton: UIButton = {
         let button = UIButton(type: .system)
-        //button.setImage(UIImage(systemName: "arrow.down.circle"), for: .normal)
         let smallConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .thin, scale: .small)
         button.setImage(UIImage(systemName: "arrow.down.circle", withConfiguration: smallConfig), for: .normal)
         button.tintColor = .systemGray3
@@ -98,7 +91,6 @@ class AlbumHeaderView: UIView {
     
     lazy var moreOptionsButton: UIButton = {
         let button = UIButton(type: .system)
-//        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         let smallConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .thin, scale: .small)
         button.setImage(UIImage(systemName: "ellipsis", withConfiguration: smallConfig), for: .normal)
         button.tintColor = .systemGray3
@@ -169,5 +161,31 @@ class AlbumHeaderView: UIView {
 
         controlButtonsView.centerYAnchor.constraint(equalTo: actionButtonsStackView.centerYAnchor).isActive = true
         controlButtonsView.rightAnchor.constraint(equalTo: rightAnchor, constant: -14).isActive = true
+    }
+    
+    func configure(with album: Album?) {
+        guard let album = album else { return }
+        albumTitleLabel.text = album.name
+        artistNameLabel.text = album.artists?.first?.name
+        if let urlString = album.images?.first?.url, let url = URL(string: urlString) {
+            // Load image asynchronously
+            loadImage(from: url) { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.albumArtworkImageView.image = image
+                }
+            }
+        } else {
+            albumArtworkImageView.image = UIImage(named: "default_image") // Fallback image
+        }
+    }
+    
+    func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(nil)
+                return
+            }
+            completion(UIImage(data: data))
+        }.resume()
     }
 }

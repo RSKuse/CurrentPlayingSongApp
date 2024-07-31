@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Item
 struct Item: Codable {
     var album: Album?
-    var artists: [ItemArtist]?
+    var artists: [Artist]?
     var availableMarkets: [String]?
     var discNumber: Int?
     var durationMS: Int?
@@ -45,4 +45,19 @@ struct Item: Codable {
         case type, uri
         case isLocal = "is_local"
     }
+}
+
+// MARK: - ExternalIDS
+struct ExternalIDS: Codable {
+    var isrc, ean, upc: String?
+}
+
+// MARK: - LinkedFrom
+struct LinkedFrom: Codable {
+}
+
+// MARK: - Copyright
+struct Copyright: Codable {
+    var text: String?
+    var type: String?
 }

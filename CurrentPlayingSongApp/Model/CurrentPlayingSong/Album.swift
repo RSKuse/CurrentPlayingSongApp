@@ -13,34 +13,23 @@ struct Album: Codable {
     var totalTracks: Int?
     var availableMarkets: [String]?
     var externalUrls: ExternalUrls?
-    var href, id: String?
+    var href: String?
+    var id: String?
     var images: [Image]?
-    var name, releaseDate, releaseDatePrecision: String?
-    var restrictions: Restrictions?
-    var type, uri: String?
-    var artists: [AlbumArtist]?
-
-    enum CodingKeys: String, CodingKey {
-        case albumType
-        case totalTracks
-        case availableMarkets
-        case externalUrls
-        case href, id, images, name
-        case releaseDate
-        case releaseDatePrecision
-        case restrictions, type, uri, artists
-    }
-}
-
-// MARK: - AlbumArtist
-struct AlbumArtist: Codable {
-    var externalUrls: ExternalUrls?
-    var href, id, name, type: String?
+    var name, releaseDate, releaseDatePrecision, type: String?
     var uri: String?
+    var artists: [Artist]?
+    var tracks: Tracks?
 
     enum CodingKeys: String, CodingKey {
-        case externalUrls
-        case href, id, name, type, uri
+        case albumType = "album_type"
+        case totalTracks = "total_tracks"
+        case availableMarkets = "available_markets"
+        case externalUrls = "external_urls"
+        case href, id, images, name
+        case releaseDate = "release_date"
+        case releaseDatePrecision = "release_date_precision"
+        case type, uri, artists, tracks
     }
 }
 
@@ -54,3 +43,4 @@ struct Image: Codable {
 struct Restrictions: Codable {
     var reason: String?
 }
+

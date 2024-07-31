@@ -326,7 +326,7 @@ class CurrentPlayingSongViewController: UIViewController {
         }
     }
     
-    func displaySongArtists(artists: [ItemArtist]) {
+    func displaySongArtists(artists: [Artist]) {
         var artistNamesArray: [String] = []
         for artistData in artists {
             if let artistName = artistData.name {

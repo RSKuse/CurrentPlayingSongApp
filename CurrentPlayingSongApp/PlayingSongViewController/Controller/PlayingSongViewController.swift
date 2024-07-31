@@ -69,7 +69,8 @@ class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UIC
     
     
     func fetchCurrentlyPlayingSong() {
-        currentlyPlayingSong = JsonToSwiftConvert.convertToSwift()
+        currentlyPlayingSong = JsonToSwiftConvert.convertToSwift(fileName: "CurrentlyPlayingSong",
+                                                                 model: SpotifyCurrentPlayingSong.self)
         if let durationMS = currentlyPlayingSong?.item?.durationMS {
             songDuration = durationMS / 1000 // Convert to seconds
             remainingTime = songDuration
@@ -78,6 +79,7 @@ class PlayingSongViewController: UIViewController, UICollectionViewDelegate, UIC
             self.devices = devices
         }
         playingSongCollectionView.reloadData()
+        
     }
     
     func setupUI() {
@@ -184,17 +186,17 @@ extension PlayingSongViewController {
 }
 
 
-//    func fetchNews() {
-//        var request = URLRequest(url: URL(string: "https://newsapi.org/v2/everything?q=bitcoin&apiKey=7fcc5fd64d5f428aa1c7c7176527023b")!,timeoutInterval: Double.infinity)
-//        request.httpMethod = "GET"
-//
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            guard let data = data else {
-//                print(String(describing: error))
-//                return
-//            }
-//            print(String(data: data, encoding: .utf8)!)
-//        }
-//
-//        task.resume()
-//    }
+func fetchNews() {
+    var request = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=7fcc5fd64d5f428aa1c7c7176527023b")!,timeoutInterval: Double.infinity)
+    request.httpMethod = "GET"
+    
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        guard let data = data else {
+            print(String(describing: error))
+            return
+        }
+        print(String(data: data, encoding: .utf8)!)
+    }
+    
+    task.resume()
+}
