@@ -11,6 +11,7 @@ class AlbumViewController: UIViewController {
     
     var spotifyCurrentPlayingSong: SpotifyCurrentPlayingSong?
     var tracks: [Item] = []
+    var selectedTrackIndex: Int?
     
     lazy var albumTableView: UITableView = {
         let tableView = UITableView()
