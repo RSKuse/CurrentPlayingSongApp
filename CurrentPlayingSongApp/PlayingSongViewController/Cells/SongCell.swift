@@ -26,6 +26,15 @@ class SongCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    lazy var downloadTickImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "checkmark.circle.fill")
+        imageView.tintColor = SpotifyColors.spotifyGreen
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
+        return imageView
+    }()
 
     lazy var trackInfoStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [trackTitleLabel, artistNameLabel])
@@ -59,6 +68,7 @@ class SongCell: UITableViewCell {
     func setupUI() {
         addSubview(trackInfoStackView)
         addSubview(optionsButton)
+        addSubview(downloadTickImageView)
         
         trackInfoStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 14).isActive = true
         trackInfoStackView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
@@ -66,10 +76,15 @@ class SongCell: UITableViewCell {
         
         optionsButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -14).isActive = true
         optionsButton.centerYAnchor.constraint(equalTo: trackInfoStackView.centerYAnchor).isActive = true
+        
+        downloadTickImageView.rightAnchor.constraint(equalTo: optionsButton.leftAnchor, constant: -10).isActive = true
+        downloadTickImageView.centerYAnchor.constraint(equalTo: trackInfoStackView.centerYAnchor).isActive = true
+
     }
     
-    func configure(trackTitle: String, artistName: String) {
+    func configure(trackTitle: String, artistName: String, isDownloaded: Bool) {
         trackTitleLabel.text = trackTitle
         artistNameLabel.text = artistName
+        downloadTickImageView.isHidden = !isDownloaded
     }
 }
